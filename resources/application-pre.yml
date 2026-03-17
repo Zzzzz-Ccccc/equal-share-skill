@@ -1,0 +1,141 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    druid:
+      first:  #数据源1   爬虫数据源 1内  2外
+        url: jdbc:mysql://rm-bp1zc7jl5d7t179dj.mysql.rds.aliyuncs.com:3306/kanjj_spider?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        #url: jdbc:mysql://rm-bp1zc7jl5d7t179djio.mysql.rds.aliyuncs.com:3306/kanjj_spider?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: kanjj_spider
+        password: vgVFjL9ejA4A6tpz
+      second:  #数据源2  api数据源
+        url: jdbc:mysql://rm-bp108d7yz822xt86b.mysql.rds.aliyuncs.com:3306/laohu_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        #url: jdbc:mysql://rm-bp108d7yz822xt86b4o.mysql.rds.aliyuncs.com:3306/laohu_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: laohu_db
+        password: xiGUxcWQpbtwnv3t
+      qixin:  #数据源3  启信宝数据源
+        url: jdbc:mysql://rm-bp108d7yz822xt86b.mysql.rds.aliyuncs.com:3306/qixin_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        #url: jdbc:mysql://rm-bp108d7yz822xt86b4o.mysql.rds.aliyuncs.com:3306/qixin_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: qixin_db
+        password: XMgQ3lNKQudsnIXO
+      third :  #数据源4  启信宝数据源
+        url: jdbc:mysql://rm-bp108d7yz822xt86b.mysql.rds.aliyuncs.com:3306/kanjj_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        #url: jdbc:mysql://rm-bp108d7yz822xt86b4o.mysql.rds.aliyuncs.com:3306/kanjj_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: kanjj_db
+        password: L4v0Q5WFjCmYh4bN
+      member:  #数据源5 membering
+        url: jdbc:mysql://rdsgezw04pude8b5339i516.mysql.rds.aliyuncs.com/membering?useAffectedRows=true&allowMultiQueries=true&useUnicode=true&useSSL=false
+        username: membering
+        password: Membering987123
+      kjjdb:  #数据源1   爬虫数据源 1内  2外
+        #url: jdbc:mysql://rm-bp108d7yz822xt86b.mysql.rds.aliyuncs.com:3306/kanjj_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        url: jdbc:mysql://rm-bp108d7yz822xt86b4o.mysql.rds.aliyuncs.com:3306/kanjj_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: kanjj_db
+        password: L4v0Q5WFjCmYh4bN
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: false #监控页面，在生产关闭，会有安全问题
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  redis:
+    open: true  # 是否开启redis缓存  true开启   false关闭
+    database: 0
+    host: r-bp181155258bf044.redis.rds.aliyuncs.com
+    #host: 47.99.180.172
+    #port: 6378
+    port: 6379
+    password: hf4gN97MkBX1cB1E # 密码（默认为空）
+    timeout: 6000  # 连接超时时长（毫秒）
+    pool:
+  #            max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+  #            max-wait: -1      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+  #            max-idle: 10      # 连接池中的最大空闲连接
+  #            min-idle: 5       # 连接池中的最小空闲连接
+  #1内  2外
+  rabbitmq:
+    host: 172.16.6.25
+    #host: 47.111.7.34
+    port: 5672
+    username: kanjjObj
+    password: WLJ3rtgIWdQTbKw6
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 172.16.114.132:9300
+      #cluster-nodes: 47.99.180.172:9330
+h5config:
+  baseUrl: https://equaldata.kanjiujing.cn   #H5访问地址
+  appBaseUrl: https://lhpre.laohucaijing.com/kjj_app
+#  appBaseUrl: https://www.kanjiujing.com/kjj_app/001
+  signMd5: hltjAmuC3stJGc5B
+  # baseListedRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=%s&search_type=1&gpdm=%s&company_id=%s&companyType=1&gsjc=%s
+  # baseFundRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&person_name=&person_type=&search_type=3&id=parCompanyId
+  # simuRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&search_type=1&gpdm=parGpdm&company_type=3
+  # otherRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&search_type=1&company_type=3
+  # baseFundProductRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&search_type=3&company_id=fundCode
+  # baseStarRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&person_name=parPersonName&person_type=1&search_type=2&company_id=parManagerId
+  # baseFundManagerRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&person_name=parPersonName&person_type=2&search_type=2&company_id=parManagerId
+  # baseFundGerentRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&person_name=parPersonName&person_type=3&search_type=2&company_id=parManagerId
+  # baseListedManageRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&person_name=parPersonName&person_type=3&search_type=2&company_id=parManagerId
+  # basePrivateFundManagerRelationUrl: /kjj_nexus/kjj_nexu.html?company_name=parCompanyName&person_name=parPersonName&person_type=6&search_type=2&company_id=parManagerId&companyCode=parCompanyCode
+  baseNewUrlRelationUrl: https://lhpre.laohucaijing.com/kjj_nexus/kjj_nexu.html?data=%s
+  baseFundManagerDetialUrl: /tenDencyDetail.html?agencyName=%s&agencyOnlyId=%s&agencyType=%s
+  basePrivateCompanyDetialUrl: /tenDencyDetail.html?agencyName=%s&agencyOnlyId=%s&agencyType=%s
+  toolGdXieTDetailDetialUrl: /gdXieTDetail.html?esOnlyId=%s&infoId=%s&infoName=%s&infoType=%s   #小工具-股东协同的详情页
+  kjjhost: r-bp181155258bf044.redis.rds.aliyuncs.com
+  #kjjhost: 47.99.180.172
+  #kjjport: 6378
+  kjjport: 6379
+  kjjpwd: hf4gN97MkBX1cB1E
+  kjjdata: 1
+  bankProductShare: /kjj_lh/kjjAtlas/bankDuct.html?productCode=%s      #分享银行产品
+  brokersProductShare: /kjj_lh/kjjAtlas/securDuct.html?productCode=%s  #分享券商产品
+  privateFundProductShare: /kjj_lh/kjjAtlas/FunductSm.html?fundCode=%s  #分享私募证券产品
+  fundProductShare: /kjj_lh/kjjAtlas/FunductDetails.html?fundName=%s&fundCode=%s  #公募基金产品分享
+  companyShare: /kjj_lh/kjjAtlas/company.html?infoName=%s&infoId=%s              #公司分享
+  ptCompanyShare: /kjj_app/ptCompany.html?infoName=%s&infoId=%s              #普通公司分享
+  peopleShare: /kjj_lh/kjjAtlas/perDetail.html?infoName=%s&persionName=%s&infoId=%s         #人物分享
+  kjjPotentialCompanyUrl: http://47.97.192.229:8899/kjj/company%s
+  rabbitMsgDealUrl: http://47.97.192.229:8899/rabbit/deal%s
+fullconfig:
+  detailNews: http://m.laohucaijing.com
+  appID: wxff26120e3eabbfdf
+  appSecret: e37882c59d413a26818d613c16375f05
+  urlPrefix : http://oss.laohucaijing.com/
+  proDev: true
+  cmsapiNewsInterface: https://lhapi.laohucaijing.com/lhcms-api/api/redis/newsStore
+  cmsapiFlashInterface: https://lhapi.laohucaijing.com/lhcms-api/api/redis/flashStore
+  cmsapiFlashSave: https://lhapi.laohucaijing.com/lhcms-api/api/redis/flashLongRange
+  cmsapiFlashDelete: https://lhapi.laohucaijing.com/lhcms-api/api/redis/flashDelete
+  #cmsapiFlashInterface: http://192.168.8.161:8990/cms-api/api/redis/flashStore
+  #cmsapiFlashSave: http://192.168.8.161:8990/cms-api/api/redis/flashLongRange
+  #cmsapiFlashDelete: http://192.168.8.161:8990/cms-api/api/redis/flashDelete
+spidercfg:
+  spiderUrl: http://47.97.192.229:8080/kjj-spider/spider/run/
+  companyInfoSpiderUrl: http://47.97.192.229:8080/kjj-spider/spider/run/baidu_company_info_spider
+
+lh:
+  neo4j:
+    bolt: bolt://172.16.6.28:7666
+    username: neo4j
+    password: Pn#mSDUmni3&

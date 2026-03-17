@@ -1,0 +1,55 @@
+# Tomcat
+server:
+    servlet:
+        context-path: /equal-data
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB
+            enabled: true
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 10000
+        min-spare-threads: 30
+    port: 9999
+
+# mysql
+spring:
+    # 环境 dev|test|pro
+    profiles:
+        active: pro
+    # jackson时间格式化
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+    http:
+        multipart:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+    # skill 模块不使用 Elasticsearch，关闭 ES 仓库自动配置，避免连接 ES 报错
+    data:
+        elasticsearch:
+            repositories:
+                enabled: false
+    # 指定静态资源的路径
+    resources:
+        static-locations: classpath:/static/
+    #设定thymeleaf
+    thymeleaf:
+        #thymeleaf对html的检查过于严格，设置spring.thymeleaf.mode=LEGACYHTML5
+        mode: LEGACYHTML5
+        cache: false
+# mybatis 配置
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    type-aliases-package: cn.lunhui.tiger.ai.dao
+    mapper-locations: classpath:mapper/**/*.xml
+
+pagehelper:
+    helperDialect: mysql
+    pagehelper.reasonable: true
+    pagehelper.supportMethodsArguments: true
+    pagehelper.params: count\=countSql
