@@ -9,11 +9,11 @@ required_env_vars:
   - KJJ_API_TOKEN
 ---
 
-# equal-data
+# equal-data-skill
 
 ## 概述
 
-equal-data是一个财经数据接口包，主要是用于查询A股股票的每日成交价格。该模块通过标准化API方式统一了数据资产的对外服务方式，以帮助有需要的技术用户更实时、简洁、轻量的使用相关数据。
+**equal-data-skill** 是基于 PyPI 包 `equal-data` 封装的看究竟(Kanjiujing)金融数据服务 Skill，主要是用于查询A股股票的各个维度统计信息。该模块通过标准化API方式统一了数据资产的对外服务方式，以帮助有需要的技术用户更实时、简洁、轻量的使用相关数据。
 
 ## 快速上手
 
@@ -38,7 +38,7 @@ api = KjjApi(token)
 
 # 高管持股变动-增减持金额排行榜列表
 data = api.query_kjj_data(
-    interfaceId="14",
+    interfaceId="DRAGON_TIGER_MANAGER_HOLDING_RANK_322EC0A8",
     period=None,  # Integer  # 默认: 1
     changeType=None,  # Integer  # 默认:
     pageIndex=None,  # Integer  # 默认: 0
@@ -52,7 +52,7 @@ data = api.query_kjj_data(
 
 | 名称           | 类型      | 必填 | 默认值   | 说明                                                         |
 | :------------- | :-------- | :--- | :------- | :----------------------------------------------------------- |
-| `interfaceId`  | `String`  | 是   | `14`     | 接口ID                                                       |
+| `interfaceId`  | `String`  | 是   | `DRAGON_TIGER_MANAGER_HOLDING_RANK_322EC0A8`     | 接口ID                                                       |
 | `period`       | `Integer` | 否   | `1`      | 1-近1月、2-近3月、3-近半年、4-近1年                          |
 | `changeType`   | `Integer` | 否   | -        | 变动类型（增持：1，减持：-1）                                |
 | `pageIndex`    | `Integer` | 是   | `0`      | 当前页从0开始                                                |
@@ -74,13 +74,18 @@ data = api.query_kjj_data(
 export KJJ_API_TOKEN="your_key_here"
 ```
 
-**方式 C：OpenClaw配置文件:
+**方式 C：OpenClaw配置文件:**
 在 `~/.openclaw/openclaw.json` 中配置：
 ```json
 {
   "skills": {
-    "equal-data-skill": {
-      "KJJ_API_TOKEN": "your_token_here"
+    "entries": {
+      "equal-data-skill": {
+        "enabled": true,
+        "env": {
+          "KJJ_API_TOKEN": "your_actual_token_here"
+        }
+      }
     }
   }
 }
@@ -171,9 +176,9 @@ export KJJ_API_TOKEN="your_key_here"
 
 ## 数据来源与依赖
 - **API 提供商**: 看究竟(kjiujing.com)
-- **官方文档**: `https://api.kjiujing.com/docs`
+- **官方文档**: `http://equal-data.com/docs`
 - **PYPI包地址**: `https://pypi.org/project/equal-data/`
-- **看究竟官网**: `[https://www.kjiujing.com](https://www.kjiujing.com/)`
+- **看究竟官网**: `[http://equal-data.com/](http://equal-data.com/)`
 - **数据用途**: 仅用于获取行情数据，不涉及交易操作
 - **开源依赖**:
   - requests (Apache 2.0)
@@ -188,6 +193,5 @@ export KJJ_API_TOKEN="your_key_here"
 ## 权限说明
 - **需要环境变量**: `KJJ_API_TOKEN`（从看究竟官网获取）
 - **本地文件写入**: `~/.openclaw/openclaw.json`（用于缓存 Token）
-- **网络访问**: 仅限 api.kjiujing.com
 
 
