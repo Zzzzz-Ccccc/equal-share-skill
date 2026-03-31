@@ -1,7 +1,7 @@
 ---
 name: equal-data-skill
-description: 看究竟金融数据服务 Skill - 提供 A 股行情、基金、财报、高管增减持、机构动向、龙虎榜、基金画像等专业金融数据查询
-author: 看究竟
+description: equaldata金融数据服务 Skill - 提供 A 股行情、基金、财报、高管增减持、机构动向、龙虎榜、基金画像等专业金融数据查询
+author: equaldata
 pypi_package: equal-data
 install_required: true
 install_command: pip install equal-data==0.0.5
@@ -13,7 +13,7 @@ required_env_vars:
 
 ## 概述
 
-**equal-data-skill** 是基于 PyPI 包 `equal-data` 封装的看究竟(Kanjiujing)金融数据服务 Skill，主要是用于查询A股股票的各个维度统计信息。该模块通过标准化API方式统一了数据资产的对外服务方式，以帮助有需要的技术用户更实时、简洁、轻量的使用相关数据。
+**equal-data-skill** 是基于 PyPI 包 `equal-data` 封装的金融数据服务 Skill，主要是用于查询A股股票的各个维度统计信息。该模块通过标准化API方式统一了数据资产的对外服务方式，以帮助有需要的技术用户更实时、简洁、轻量的使用相关数据。
 
 ## 快速上手
 
@@ -64,9 +64,9 @@ data = api.query_kjj_data(
 
 ## 认证方式
 
-本 Skill 需要看究竟 API Token (`KJJ_API_TOKEN`)，支持以下两种方式配置：
+本 Skill 需要equaldata API Token (`KJJ_API_TOKEN`)，支持以下两种方式配置：
 
-看究竟官网注册，获取token，
+[equaldata官网](https://equal-data.com/equal/dist/login)注册，获取token，
 
 **方式 B：配置环境变量**。
 
@@ -173,9 +173,9 @@ export KJJ_API_TOKEN="your_key_here"
 | **合计** | **50** |
 
 ## 数据来源与依赖
-- **官方文档**: `http://equal-data.com/docs`
+- **官方文档**: `https://equal-data.com/equal/dist/datainterface`
 - **PYPI包地址**: `https://pypi.org/project/equal-data/`
-- **官网**: `[https://equal-data.com/](https://equal-data.com/)`
+- **官网**: [https://equal-data.com/](https://equal-data.com/)
 - **数据用途**: 仅用于获取行情数据，不涉及交易操作
 - **开源依赖**:
   - requests (Apache 2.0)
@@ -188,7 +188,6 @@ export KJJ_API_TOKEN="your_key_here"
 - 源码仓库: https://github.com/kanjiujing/equal-share-skill/
 
 ## 权限说明
-- **需要环境变量**: `KJJ_API_TOKEN`（从看究竟官网获取）
+- **需要环境变量**: `KJJ_API_TOKEN`
 - **本地文件写入**: `~/.openclaw/openclaw.json`（用于缓存 Token）
-
 
