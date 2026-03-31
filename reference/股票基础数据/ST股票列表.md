@@ -11,10 +11,10 @@
 
 | 名称 | 类型 | 必填 | 默认值 | 说明 |
 |:---|:---|:---|:---|:---|
-| `interfaceId` | `String` | 是 | "STOCK_ST_LIST_D9254E18" | 接口ID |
-| `pageNum` | `Integer` | 否 | `0` | 分页偏移量，从 0 开始（第 1 页为 0，第 2 页为 pageSize） |
-| `pageSize` | `Integer` | 否 | `10` | 每页条数 |
-| `stockList` | `List<String>` | 否 | - | 股票代码/名称,如果传递的股票不是ST，会返回空列表，示例：['000001','600519'] |
+| `interfaceId` | `str` | 是 | "STOCK_ST_LIST_D9254E18" | 接口ID |
+| `pageNum` | `int` | 否 | `0` | 分页偏移量，从 0 开始（第 1 页为 0，第 2 页为 pageSize） |
+| `pageSize` | `int` | 否 | `10` | 每页条数 |
+| `stockList` | `list[str]` | 否 | - | 股票代码/名称,如果传递的股票不是ST，会返回空列表，示例：['000001','600519'] |
 
 ### 返回参数
 
@@ -22,30 +22,30 @@ ResultData.data 为 List，元素为ST股票
 
 | 名称 | 类型 | 是否必返回 | 说明 |
 |:---|:---|:---|:---|
-| `data` | `List<ListedCompanyVo>` | 否 | ST股票列表 |
-| `stockCode` | `String` | 否 | 股票代码 |
-| `companyName` | `String` | 否 | 公司全称 |
-| `companyShortName` | `String` | 否 | 公司简称 |
-| `formername` | `String` | 否 | 曾用名 |
-| `industry` | `String` | 否 | 所属行业 |
-| `subIndustry` | `String` | 否 | 所属子行业 |
-| `establishmentDate` | `String` | 否 | 成立日期 |
-| `registrationDate` | `String` | 否 | 注册日期 |
-| `registeredCapital` | `String` | 否 | 注册资金（亿） |
-| `province` | `String` | 否 | 所属地域 |
-| `registeredProvince` | `String` | 否 | 注册地点省 |
-| `registeredCity` | `String` | 否 | 注册地点市 |
-| `registeredCounty` | `String` | 否 | 注册地点县 |
-| `legalRepresentative` | `String` | 否 | 法人代表 |
-| `listingDate` | `String` | 否 | 上市时间 |
-| `companyType` | `String` | 否 | 公司类型 |
-| `businessOverview` | `String` | 否 | 业务概述 |
-| `actualController` | `String` | 否 | 实际控制人 |
-| `companyIntroduction` | `String` | 否 | 公司简介 |
-| `industryDomain` | `String` | 否 | 行业领域 |
-| `stockType` | `String` | 否 | 证券类别 |
-| `businessScope` | `String` | 否 | 经营范围 |
-| `delistedDate` | `Date` | 否 | 退市时间 |
+| `data` | `list[ListedCompanyVo]` | 否 | ST股票列表 |
+| `stockCode` | `str` | 否 | 股票代码 |
+| `companyName` | `str` | 否 | 公司全称 |
+| `companyShortName` | `str` | 否 | 公司简称 |
+| `formername` | `str` | 否 | 曾用名 |
+| `industry` | `str` | 否 | 所属行业 |
+| `subIndustry` | `str` | 否 | 所属子行业 |
+| `establishmentDate` | `str` | 否 | 成立日期 |
+| `registrationDate` | `str` | 否 | 注册日期 |
+| `registeredCapital` | `str` | 否 | 注册资金（亿） |
+| `province` | `str` | 否 | 所属地域 |
+| `registeredProvince` | `str` | 否 | 注册地点省 |
+| `registeredCity` | `str` | 否 | 注册地点市 |
+| `registeredCounty` | `str` | 否 | 注册地点县 |
+| `legalRepresentative` | `str` | 否 | 法人代表 |
+| `listingDate` | `str` | 否 | 上市时间 |
+| `companyType` | `str` | 否 | 公司类型 |
+| `businessOverview` | `str` | 否 | 业务概述 |
+| `actualController` | `str` | 否 | 实际控制人 |
+| `companyIntroduction` | `str` | 否 | 公司简介 |
+| `industryDomain` | `str` | 否 | 行业领域 |
+| `stockType` | `str` | 否 | 证券类别 |
+| `businessScope` | `str` | 否 | 经营范围 |
+| `delistedDate` | `str(datetime)` | 否 | 退市时间 |
 
 ### 调用示例
 
@@ -55,9 +55,9 @@ api = KjjApi('bear your token')
 # 调用接口
 data = api.query_kjj_data(
     interfaceId="STOCK_ST_LIST_D9254E18",
-    pageNum=None,  # Integer  # 默认: 0
-    pageSize=None,  # Integer  # 默认: 10
-    stockList=None,  # List<String>  # 默认: 
+    pageNum=None,  # int  # 默认: 0
+    pageSize=None,  # int  # 默认: 10
+    stockList=None,  # list[str]  # 默认: 
 )
 ```
 

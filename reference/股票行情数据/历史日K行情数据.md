@@ -11,11 +11,10 @@
 
 | 名称 | 类型 | 必填 | 默认值 | 说明 |
 |:---|:---|:---|:---|:---|
-| `interfaceId` | `String` | 是 | "STOCK_QUOTE_HISTORY_QUOTE_LIST_C82F9954" | 接口ID |
-| `stockCodeList` | `List<String>` | 否 | - | 单次查询股票代码列表（不超过50个），示例：['000001','600519'] |
-| `tradeDate` | `String` | 否 | - | 交易日，示例：2024-03-20 |
-| `startDate` | `String` | 否 | - | 开始日期，示例：2023-01-01 |
-| `endDate` | `String` | 否 | - | 结束日期，示例：2023-12-31 |
+| `interfaceId` | `str` | 是 | "STOCK_QUOTE_HISTORY_QUOTE_LIST_C82F9954" | 接口ID |
+| `stockCodes` | `str` | 否 | - | 支持查询单只股票和多只股票（单次查询不超过20个），如果是多只，以逗号隔开；示例：'000001',<br>'600519' |
+| `startDate` | `str` | 否 | - | 开始日期，示例：2023-01-01 |
+| `endDate` | `str` | 否 | - | 结束日期，示例：2023-12-31 |
 
 ### 返回参数
 
@@ -23,18 +22,18 @@ ResultData.data 为 List，元素为历史日K行情列表
 
 | 名称 | 类型 | 是否必返回 | 说明 |
 |:---|:---|:---|:---|
-| `stockCode` | `String` | 否 | 股票代码 |
-| `stockName` | `String` | 否 | 股票名称 |
-| `tradeDate` | `String` | 否 | 交易日 |
-| `newPrice` | `Bigdecimal` | 否 | 最新价 |
-| `maxPrice` | `Bigdecimal` | 否 | 最高价 |
-| `minPrice` | `Bigdecimal` | 否 | 最低价 |
-| `openPrice` | `Bigdecimal` | 否 | 开盘价 |
-| `yesterdayClosePrice` | `Bigdecimal` | 否 | 昨收价 |
-| `chg` | `BigDecimal` | 否 | 涨跌幅 |
-| `chgMoney` | `Bigdecimal` | 否 | 涨跌额 |
-| `volume` | `Long` | 否 | 成交量 |
-| `tradeMoney` | `Bigdecimal` | 否 | 成交额 |
+| `stockCode` | `str` | 否 | 股票代码 |
+| `stockName` | `str` | 否 | 股票名称 |
+| `tradeDate` | `str` | 否 | 交易日 |
+| `newPrice` | `float` | 否 | 最新价 |
+| `maxPrice` | `float` | 否 | 最高价 |
+| `minPrice` | `float` | 否 | 最低价 |
+| `openPrice` | `float` | 否 | 开盘价 |
+| `yesterdayClosePrice` | `float` | 否 | 昨收价 |
+| `chg` | `float` | 否 | 涨跌幅 |
+| `chgMoney` | `float` | 否 | 涨跌额 |
+| `volume` | `int` | 否 | 成交量 |
+| `tradeMoney` | `float` | 否 | 成交额 |
 
 ### 调用示例
 
@@ -44,10 +43,9 @@ api = KjjApi('bear your token')
 # 调用接口
 data = api.query_kjj_data(
     interfaceId="STOCK_QUOTE_HISTORY_QUOTE_LIST_C82F9954",
-    stockCodeList=None,  # List<String>  # 默认: 
-    tradeDate=None,  # String  # 默认: 
-    startDate=None,  # String  # 默认: 
-    endDate=None,  # String  # 默认: 
+    stockCodes=None,  # str  # 默认: 
+    startDate=None,  # str  # 默认: 
+    endDate=None,  # str  # 默认: 
 )
 ```
 
