@@ -45,7 +45,7 @@ ResultData.data 为 List，元素为ST股票
 | `industryDomain` | `str` | 否 | 行业领域 |
 | `stockType` | `str` | 否 | 证券类别 |
 | `businessScope` | `str` | 否 | 经营范围 |
-| `delistedDate` | `str(datetime)` | 否 | 退市时间 |
+| `delistedDate` | `str` | 否 | 退市时间 |
 
 ### 调用示例
 
